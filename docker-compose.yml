@@ -1,0 +1,72 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: sktagency-backend
+    restart: unless-stopped
+    environment:
+      DJANGO_DEBUG: "0"
+      DJANGO_SECRET_KEY: "sktagency-production-secret-key-change-me"
+      DJANGO_ALLOWED_HOSTS: "localhost,127.0.0.1,sktagency.pro,www.sktagency.pro"
+      DJANGO_CORS_ALLOWED_ORIGINS: "https://localhost,https://127.0.0.1,https://sktagency.pro,https://www.sktagency.pro"
+      DJANGO_CSRF_TRUSTED_ORIGINS: "https://localhost,https://127.0.0.1,https://sktagency.pro,https://www.sktagency.pro"
+      DJANGO_TELEGRAM_BOT_TOKEN: "8282150668:AAFuVWN6BByHG7HatCmclLQ11_N8_rmTgPI"
+      DJANGO_TELEGRAM_CHAT_ID: "-1002762325247"
+      DJANGO_TELEGRAM_TIMEOUT: "8"
+      DJANGO_TELEGRAM_MAX_RETRIES: "3"
+    volumes:
+      - db_data:/app/db
+      - media_data:/app/media
+      - static_data:/app/staticfiles
+    command: >
+      sh -c "
+      mkdir -p /app/db &&
+      ln -sf /app/db/db.sqlite3 /app/db.sqlite3 &&
+      python manage.py migrate &&
+      python manage.py collectstatic --noinput &&
+      gunicorn backend.wsgi:application --bind 0.0.0.0:8000 --workers 3 --timeout 120
+      "
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/content/"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    container_name: sktagency-nginx
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - media_data:/var/www/media:ro
+      - static_data:/var/www/static:ro
+      - certbot_www:/var/www/certbot
+      - letsencrypt_data:/etc/letsencrypt
+
+  certbot:
+    image: certbot/certbot:latest
+    container_name: sktagency-certbot
+    restart: "no"
+    volumes:
+      - certbot_www:/var/www/certbot
+      - letsencrypt_data:/etc/letsencrypt
+    command: >
+      certonly --webroot -w /var/www/certbot
+      --email hello@sktagency.pro
+      --agree-tos --no-eff-email
+      -d sktagency.pro -d www.sktagency.pro
+
+volumes:
+  db_data:
+  media_data:
+  static_data:
+  certbot_www:
+  letsencrypt_data:

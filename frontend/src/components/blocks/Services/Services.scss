@@ -1,0 +1,289 @@
+.services {
+  width: 100%;
+  padding: 86px 0 92px;
+  background: #FFFFFF;
+
+  &__head {
+    padding: 0 70px;
+    margin: 0 0 36px;
+  }
+
+  &__label {
+    margin: 0;
+    color: #161616;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: right;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.68;
+  }
+
+  &__title {
+    margin: 14px 0 0;
+    color: #161616;
+    text-align: right;
+    font-size: clamp(38px, 3.9vw, 60px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+  }
+
+  &__subtitle {
+    margin: 18px 0 0;
+    text-align: right;
+
+    color: #161616;
+    opacity: 0.74;
+    font-size: clamp(20px, 1.55vw, 26px);
+    font-weight: 500;
+    line-height: 1.36;
+  }
+
+  &__marquee {
+    position: relative;
+    overflow: hidden;
+ }
+
+  &__track {
+    display: flex;
+    width: max-content;
+    gap: 20px;
+    animation: services-marquee 44s linear infinite;
+    will-change: transform;
+  }
+
+  &__card {
+    width: clamp(420px, 35vw, 560px);
+    min-height: 460px;
+    border: 2px solid #161616;
+    border-radius: 34px;
+    overflow: hidden;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+
+  &__card-media {
+    height: 220px;
+    overflow: hidden;
+    border-bottom: 2px solid #161616;
+  }
+
+  &__card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0.1) contrast(1.05);
+  }
+
+  &__card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+    flex: 1 1 auto;
+  }
+
+  &__card-number {
+    margin: 0;
+    color: #161616;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    opacity: 0.54;
+  }
+
+  &__card-title {
+    margin: 0;
+    color: #161616;
+    font-size: clamp(30px, 2.4vw, 42px);
+    font-weight: 700;
+    line-height: 1.08;
+  }
+
+  &__card-text {
+    margin: 0;
+    color: #161616;
+    opacity: 0.84;
+    font-size: clamp(20px, 1.45vw, 25px);
+    font-weight: 500;
+    line-height: 1.34;
+  }
+
+  &__card-meta {
+    margin: auto 0 0;
+    color: #161616;
+    border-top: 2px solid #161616;
+    padding-top: 12px;
+    font-size: clamp(17px, 1.2vw, 21px);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+}
+
+@keyframes services-marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 1200px) {
+  .services {
+    padding: 66px 0 72px;
+
+    &__head {
+      padding: 0 32px;
+    }
+
+    &__card {
+      width: clamp(360px, 74vw, 480px);
+      min-height: 420px;
+    }
+
+    &__card-media {
+      height: 180px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .services {
+    &__label,
+    &__title,
+    &__subtitle {
+      text-align: left;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .services {
+    padding: 48px 0 56px;
+
+    &__head {
+      padding: 0 20px;
+    }
+
+    &__marquee {
+      mask-image: none;
+    }
+
+    &__track {
+      animation-duration: 36s;
+      gap: 14px;
+    }
+
+    &__card {
+      width: clamp(280px, 78vw, 340px);
+      min-height: 340px;
+      border-radius: 24px;
+    }
+
+    &__card-media {
+      height: 150px;
+    }
+
+    &__card-content {
+      padding: 16px;
+      gap: 8px;
+    }
+
+    &__card-title {
+      font-size: clamp(24px, 5vw, 30px);
+    }
+
+    &__card-text {
+      font-size: clamp(16px, 3.3vw, 20px);
+    }
+
+    &__card-meta {
+      font-size: clamp(14px, 2.8vw, 18px);
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .services {
+    padding: 38px 0 42px;
+
+    &__head {
+      padding: 0 12px;
+      margin-bottom: 20px;
+    }
+
+    &__label {
+      font-size: 13px;
+    }
+
+    &__title {
+      margin-top: 10px;
+      font-size: clamp(25px, 8vw, 32px);
+      line-height: 1.1;
+    }
+
+    &__subtitle {
+      margin-top: 10px;
+      font-size: 15px;
+      line-height: 1.36;
+    }
+
+    &__track {
+      gap: 10px;
+      animation-duration: 34s;
+    }
+
+    &__card {
+      width: min(86vw, 300px);
+      min-height: 310px;
+      border-width: 1.5px;
+      border-radius: 18px;
+    }
+
+    &__card-media {
+      height: 136px;
+      border-bottom-width: 1.5px;
+    }
+
+    &__card-content {
+      padding: 12px;
+    }
+
+    &__card-number {
+      font-size: 13px;
+    }
+
+    &__card-title {
+      font-size: 20px;
+      line-height: 1.12;
+    }
+
+    &__card-text {
+      font-size: 14px;
+      line-height: 1.34;
+    }
+
+    &__card-meta {
+      border-top-width: 1.5px;
+      padding-top: 9px;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services {
+    &__track {
+      animation: none;
+    }
+  }
+}

@@ -1,0 +1,366 @@
+.cases {
+  width: 100%;
+  padding: 74px 70px 88px;
+  background: #FFFFFF;
+
+  &__head {
+    margin: 0 0 26px;
+  }
+
+  &__label {
+    margin: 0;
+    color: #161616;
+    opacity: 0.68;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    margin: 14px 0 0;
+    color: #161616;
+    font-size: clamp(38px, 3.7vw, 58px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+  }
+
+  &__slider {
+    max-width: 1640px;
+    margin: 0 auto;
+  }
+
+  &__arrow {
+    width: 52px;
+    height: 52px;
+    border: 2px solid #161616;
+    border-radius: 50%;
+    background: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease;
+
+    &:hover,
+    &:focus-visible {
+      transform: scale(1.04);
+      background: #161616;
+    }
+
+    &:hover .cases__arrow-icon,
+    &:focus-visible .cases__arrow-icon {
+      border-color: #FFFFFF;
+    }
+  }
+
+  &__arrow-icon {
+    width: 14px;
+    height: 14px;
+    border-top: 3px solid #161616;
+    border-right: 3px solid #161616;
+
+    &--left {
+      transform: rotate(-135deg);
+      margin-left: 4px;
+    }
+
+    &--right {
+      transform: rotate(45deg);
+      margin-right: 4px;
+    }
+  }
+
+  &__viewport {
+    overflow: hidden;
+    border-radius: 34px;
+    border: 2px solid #161616;
+  }
+
+  &__track {
+    display: flex;
+    transition: transform 0.48s ease;
+  }
+
+  &__slide {
+    width: 100%;
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    background: #FFFFFF;
+  }
+
+  &__media {
+    min-height: 460px;
+    border-right: 2px solid #161616;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    filter: contrast(1.04) saturate(1.05);
+  }
+
+  &__content {
+    padding: 28px 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__project-label {
+    margin: 0;
+    color: #161616;
+    opacity: 0.58;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__project-title {
+    margin: 10px 0 0;
+    color: #161616;
+    font-size: clamp(30px, 2.5vw, 42px);
+    font-weight: 700;
+    line-height: 1.08;
+  }
+
+  &__result {
+    margin: 16px 0 0;
+    color: #FFFFFF;
+    background: #161616;
+    border: 2px solid #161616;
+    border-radius: 999px;
+    width: fit-content;
+    padding: 10px 16px;
+    font-size: clamp(18px, 1.2vw, 22px);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__review {
+    margin: 18px 0 0;
+    color: #161616;
+    opacity: 0.84;
+    font-size: clamp(20px, 1.35vw, 25px);
+    font-weight: 500;
+    line-height: 1.35;
+    max-width: 680px;
+  }
+
+  &__meta {
+    margin-top: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__author-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__author {
+    margin: 0;
+    color: #161616;
+    font-size: clamp(24px, 1.7vw, 31px);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  &__role {
+    margin: 6px 0 0;
+    color: #161616;
+    opacity: 0.65;
+    font-size: clamp(18px, 1.2vw, 22px);
+    font-weight: 500;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__dots {
+    max-width: 1640px;
+    margin: 18px auto 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__dot {
+    width: 44px;
+    height: 8px;
+    border: 0;
+    border-radius: 999px;
+    background: #161616;
+    opacity: 0.2;
+    cursor: pointer;
+    transition:
+      opacity 0.22s ease,
+      transform 0.22s ease;
+
+    &--active {
+      opacity: 1;
+      transform: scaleX(1.18);
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .cases {
+    padding: 62px 32px 72px;
+
+    &__slide {
+      grid-template-columns: 1fr;
+    }
+
+    &__media {
+      min-height: 320px;
+      border-right: 0;
+      border-bottom: 2px solid #161616;
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  .cases {
+    padding: 48px 20px 56px;
+
+    &__viewport {
+      border-radius: 22px;
+    }
+
+    &__media {
+      min-height: 210px;
+    }
+
+    &__content {
+      padding: 18px 14px;
+    }
+
+    &__meta {
+      margin-top: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    &__controls {
+      gap: 6px;
+    }
+
+    &__arrow {
+      width: 42px;
+      height: 42px;
+    }
+
+    &__arrow-icon {
+      width: 11px;
+      height: 11px;
+      border-top-width: 2px;
+      border-right-width: 2px;
+    }
+
+    &__result {
+      border-radius: 16px;
+      width: 100%;
+    }
+
+    &__dot {
+      width: 28px;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .cases {
+    padding: 38px 12px 42px;
+
+    &__head {
+      margin-bottom: 16px;
+    }
+
+    &__label {
+      font-size: 13px;
+    }
+
+    &__title {
+      margin-top: 10px;
+      font-size: clamp(25px, 8vw, 32px);
+      line-height: 1.1;
+    }
+
+    &__viewport {
+      border-width: 1.5px;
+      border-radius: 16px;
+    }
+
+    &__media {
+      min-height: 180px;
+      border-bottom-width: 1.5px;
+    }
+
+    &__content {
+      padding: 12px 10px;
+    }
+
+    &__project-label {
+      font-size: 12px;
+    }
+
+    &__project-title {
+      margin-top: 8px;
+      font-size: clamp(22px, 7vw, 28px);
+    }
+
+    &__result {
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-width: 1.5px;
+      font-size: 14px;
+    }
+
+    &__review {
+      margin-top: 10px;
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    &__meta {
+      gap: 10px;
+    }
+
+    &__author {
+      font-size: 20px;
+    }
+
+    &__role {
+      margin-top: 4px;
+      font-size: 14px;
+    }
+
+    &__arrow {
+      width: 36px;
+      height: 36px;
+      border-width: 1.5px;
+    }
+
+    &__dots {
+      margin-top: 12px;
+      gap: 6px;
+    }
+
+    &__dot {
+      width: 20px;
+      height: 6px;
+    }
+  }
+}
