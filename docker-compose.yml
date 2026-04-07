@@ -61,7 +61,8 @@ services:
     command: >
       certonly --webroot -w /var/www/certbot
       --email hello@sktagency.pro
-      --agree-tos --no-eff-email
+      --agree-tos --no-eff-email --non-interactive --keep-until-expiring
+      --cert-name sktagency.pro
       -d sktagency.pro -d www.sktagency.pro
 
 volumes:

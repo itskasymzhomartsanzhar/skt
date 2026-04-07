@@ -8,7 +8,7 @@ RUN yarn build
 FROM nginx:1.27-alpine
 
 RUN apk add --no-cache openssl \
-    && mkdir -p /etc/letsencrypt/live/sktagency.pro /var/www/certbot
+    && mkdir -p /etc/nginx/ssl /etc/letsencrypt/live /var/www/certbot
 
 COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf

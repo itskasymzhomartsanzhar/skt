@@ -18,6 +18,13 @@ docker compose up -d --build backend nginx
 docker compose run --rm certbot && docker compose restart nginx
 ```
 
+Если раньше уже создавался self-signed сертификат и браузер продолжает ругаться:
+
+```bash
+docker compose run --rm certbot sh -lc 'rm -rf /etc/letsencrypt/live/sktagency.pro /etc/letsencrypt/archive/sktagency.pro /etc/letsencrypt/renewal/sktagency.pro.conf && certbot certonly --webroot -w /var/www/certbot --email hello@sktagency.pro --agree-tos --no-eff-email --non-interactive --cert-name sktagency.pro -d sktagency.pro -d www.sktagency.pro --force-renewal'
+docker compose restart nginx
+```
+
 ## Готово
 
 - Сайт: `https://sktagency.pro`
