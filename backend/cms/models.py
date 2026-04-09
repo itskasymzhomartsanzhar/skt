@@ -137,7 +137,7 @@ class CalculatorQuestion(TimeStampedModel):
     key = models.CharField(
         max_length=80,
         unique=True,
-        validators=[RegexValidator(r"^[a-z0-9_\-\.]+$")],
+        validators=[RegexValidator(r"^[A-Za-z0-9_\-\.]+$")],
     )
     title = models.CharField(max_length=220)
     text = models.TextField(blank=True)
@@ -165,7 +165,7 @@ class CalculatorOption(TimeStampedModel):
     )
     key = models.CharField(
         max_length=80,
-        validators=[RegexValidator(r"^[a-z0-9_\-\.]+$")],
+        validators=[RegexValidator(r"^[A-Za-z0-9_\-\.]+$")],
     )
     title = models.CharField(max_length=220)
     description = models.CharField(max_length=320, blank=True)
